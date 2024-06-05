@@ -1,4 +1,5 @@
 import json
+import sys
 
 
 def load_json(file_path):
@@ -34,10 +35,13 @@ def main(values_path, tests_path, report_path):
     save_json(tests_data, report_path)
 
 
-
 if __name__ == "__main__":
-    # Укажите правильные пути к вашим файлам на вашем компьютере
-    values_path = 'C:/Users/User/Desktop/tz/task_3/values.json'
-    tests_path = 'C:/Users/User/Desktop/tz/task_3/tests.json'
-    report_path = 'C:/Users/User/Desktop/tz/task_3/report.json'
+    if len(sys.argv) != 4:
+        print("Usage: python task3.py <values.json> <tests.json> <report.json")
+        sys.exit(1)
+
+    values_path = sys.argv[1]
+    tests_path = sys.argv[2]
+    report_path = sys.argv[3]
+
     main(values_path, tests_path, report_path)
